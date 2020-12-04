@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres
+    container_name: pg-docker
+    ports:
+      - "5432:5432"
+    expose:
+      # Opens port 5432 on the container
+      - '5432'
+      # Where our data will be persisted
+    environment:
+      - POSTGRES_USER=game_cas
+      - POSTGRES_PASSWORD=game_cas
+      - POSTGRES_DB=GAME_CAS
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    restart: always
